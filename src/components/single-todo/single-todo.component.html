@@ -1,29 +1,9 @@
-<!-- @for (todo of allTodos; track todo.id) {
-@if (isEdit) {
-<form (submit)="saveTodo($event,todo.id)">
-    <input [(ngModel)]="updateTodoName" value="todo.name" [ngModelOptions]="{ standalone: true }" type="text" name=""
-        id="" placeholder="enter a todo" />
-    <button type="submit">save</button>
-</form>
-} @else {
-<div>
-    <p>{{ todo.name }}</p>
-    <p>{{ todo.isComplete }}</p>
-    <button (click)="editTodo(todo.id)" [disabled]="isEdit">edit</button>
-    <button (click)="deleteTodo(todo.id)">delete</button>
-    <button (click)="completeTodo(todo.id)">check</button>
-</div>
-}
-
-} -->
-
-
 @for (todo of allTodos; track todo.id) {
 @if (todo.isEdit) {
 <form (submit)="saveTodo($event,todo.id)" class="edit-form">
     <input [(ngModel)]="updateTodoName" value="todo.name" [ngModelOptions]="{ standalone: true }" type="text" name=""
-        id="" placeholder="enter a todo" />
-    <button type="submit">
+        id="" placeholder="Update todo" />
+    <button type="submit" aria-label="save">
         <i class="fa-solid fa-floppy-disk fa-xl save-icon"></i>
     </button>
 </form>
@@ -31,13 +11,13 @@
 <div class="todo-container" [ngClass]="{'active': todo.isComplete}">
     <p class="todo-name" [ngClass]="{'done': todo.isComplete}">{{ todo.name }}</p>
     <div class="todo-buttons">
-        <button class='todo-button' (click)="deleteTodo(todo.id)">
+        <button class='todo-button' (click)="deleteTodo(todo.id)" aria-label="delete">
             <i class="fa-solid fa-trash-can fa-xl"></i>
         </button>
-        <button class='todo-button' (click)="editTodo(todo.id)" [disabled]="isEdit">
+        <button class='todo-button' (click)="editTodo(todo.id)" [disabled]="isEdit" aria-label="edit">
             <i class="fa-solid fa-pencil fa-xl"></i>
         </button>
-        <button class='todo-button' (click)="completeTodo(todo.id)">
+        <button class='todo-button' (click)="completeTodo(todo.id)" aria-label="check">
             <i class="fa-solid fa-circle-check fa-xl" [ngClass]="{'tick': todo.isComplete}" ></i>
         </button>
     </div>
