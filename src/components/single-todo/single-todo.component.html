@@ -1,8 +1,7 @@
 @for (todo of allTodos; track todo.id) {
 @if (todo.isEdit) {
 <form (submit)="saveTodo($event,todo.id)" class="edit-form">
-    <input [(ngModel)]="updateTodoName" value="todo.name" [ngModelOptions]="{ standalone: true }" type="text" name=""
-        id="" placeholder="Update todo" />
+    <input [(ngModel)]="updateTodoName" value="todo.name" [ngModelOptions]="{ standalone: true }" type="text"  />
     <button type="submit" aria-label="save">
         <i class="fa-solid fa-floppy-disk fa-xl save-icon"></i>
     </button>

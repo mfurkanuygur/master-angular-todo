@@ -5,10 +5,10 @@ import { SingleTodoComponent } from '../components/single-todo/single-todo.compo
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [ TodoformComponent,SingleTodoComponent],
+  imports: [TodoformComponent, SingleTodoComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'todo';
+  
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { TodosService } from '../../services/todos.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class SingleTodoComponent implements OnInit {
   allTodos: any[] = [];
-  isEdit: boolean = false;
+  @Input() isEdit!: boolean;
   updateTodoName: string = '';
   constructor(private todosService: TodosService) {}
 
@@ -24,16 +24,17 @@ export class SingleTodoComponent implements OnInit {
 
   editTodo = (id: number) => {
     this.isEdit = !this.isEdit;
-    this.updateTodoName = this.allTodos.find((t) => (t.id == id)).name;
+    this.updateTodoName = this.allTodos.find((t) => t.id == id).name;
+    this.todosService.changeDisable();
     this.todosService.editTodo(id);
   };
   saveTodo = (e: Event, todoID: number) => {
     e.preventDefault();
-
     if (this.updateTodoName.trim() !== '') {
       this.todosService.updateTodo(todoID, this.updateTodoName);
       this.updateTodoName = '';
       this.isEdit = !this.isEdit;
+      this.todosService.changeDisable();
     }
   };
 

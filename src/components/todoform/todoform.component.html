@@ -1,4 +1,4 @@
 <form (submit)="add($event)">
     <input [(ngModel)]="todoname" [ngModelOptions]="{standalone: true}" type="text"  placeholder="Please enter a todo!">
-    <button type="submit" aria-label="add"> <i class="fa-solid fa-floppy-disk fa-xl save-icon"></i></button>
+    <button type="submit" aria-label="add"  [disabled]="isDisabled"> <i class="fa-solid fa-floppy-disk fa-xl save-icon"></i></button>
 </form>
